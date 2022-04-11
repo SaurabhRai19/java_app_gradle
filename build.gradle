@@ -42,6 +42,9 @@ publishing {
     }
     publications {
         gpr(MavenPublication) {
+            groupId = 'org.group.example'
+            artifactId = 'artifactjava'
+            version = '0.1'
             from(components.java)
         }
     }
