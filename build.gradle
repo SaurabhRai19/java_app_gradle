@@ -43,8 +43,8 @@ publishing {
             // (must be both lowercase according to the documenations)
             url = uri("https://maven.pkg.github.com/saurabhrai19/java_app_gradle")
             credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+                username = 'SaurabhRai19'
+                password = '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'
             }
         }
     }
