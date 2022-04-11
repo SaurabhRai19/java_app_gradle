@@ -4,7 +4,7 @@ plugins {
     id 'org.springframework.boot' version '2.5.0'
     id 'pl.allegro.tech.build.axion-release' version '1.13.2'
     id 'com.palantir.docker' version '0.26.0'
-    id 'com.palantir.docker-run' version '0.26.0'
+ 
     id 'jp.classmethod.aws.cloudformation' version '0.41'
     id("maven-publish")
 }
@@ -55,4 +55,20 @@ publishing {
     }
     
 }
+String dockerHubUsernameProperty = findProperty('dockerHubUsername') ?: 'tkgregory'
+String imageName = "${dockerHubUsernameProperty}/spring-boot-api-example:$version"
+
+docker {
+    name imageName
+    files "build/libs/${bootJar.archiveFileName.get()}"
+    buildArgs([JAR_FILE: bootJar.archiveFileName.get()])
+}
+
+dockerRun {
+    name project.name
+    image imageName
+    ports '8080:8080'
+    clean true
+}
+
 
