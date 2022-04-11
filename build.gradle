@@ -4,7 +4,6 @@ plugins {
 }
 
 group 'org.group.example'
-artifact 'artifactjava'
 version '0.1'
 
 repositories {
@@ -31,6 +30,7 @@ publishing {
     }
     publications {
         gpr(MavenPublication) {
+            artifactId ='artifactjava'
             from(components.java)
         }
     }
