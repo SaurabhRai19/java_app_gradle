@@ -22,7 +22,7 @@ publishing {
             // (must be both lowercase according to the documenations)
             url = "https://maven.pkg.github.com/saurabhrai19/java_app_gradle"
             credentials {
-                username = System.getenv("GITHUB_USERNAME")
+                username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
             }
         }
