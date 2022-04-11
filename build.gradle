@@ -2,6 +2,10 @@ plugins {
     id 'maven-publish'
 }
 
+groupId 'org.group.example'
+artifactId 'artifactjava'
+version '0.1'
+
 publishing {
     repositories {
         maven {
@@ -22,10 +26,6 @@ publishing {
     }
     publications {
         gpr(MavenPublication) {
-            groupId = 'org.group.example'
-            artifactId = 'artifactjava'
-            version = '0.1'
-
             from(components.java)
         }
     }
