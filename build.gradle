@@ -1,19 +1,37 @@
 plugins {
-    id 'java'
-    id 'io.spring.dependency-management' version "1.0.11.RELEASE"
-    id 'org.springframework.boot' version '2.6.1'
-    id 'pl.allegro.tech.build.axion-release' version '1.13.6'
-    id 'com.palantir.docker' version '0.31.0'
-    id 'com.palantir.docker-run' version '0.31.0'
-    id 'jp.classmethod.aws.reboot.cloudformation' version '0.45'
+    id 'maven-publish'
 }
 
 version = scmVersion.version
 
-repositories {
-    mavenCentral()
-}
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            // Replace OWNER and REPOSITORY with your GitHub username/repository
+            // (must be both lowercase according to the documenations)
+            url = uri("https://maven.pkg.github.com/saurabhrai19/java_app_gradle")
+            credentials {
+                // Make sure to generate a token with write-packages and read-packages permission: https://github.com/settings/tokens/new
+                // You can either store the username and token in ~/.gradle/gradle.properties (use the gpr.user and gpr.key keys)
+                // Or you can store them as environment variables e.g. in ~/.bash_profile or ~/.zsh depending on your shell (GITHUB_USERNAME and GITHUB_TOKEN keys)
+                // Or you pass them via CLI: gradle publish -Pgpr.user=username -Pgpr.key=token
+                // See at EOF for examples on how to store the credentials
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            groupId = 'org.group.example'
+            artifactId = 'artifactjava'
+            version = '0.1'
 
+            from(components.java)
+        }
+    }
+}
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
