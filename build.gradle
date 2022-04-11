@@ -31,11 +31,6 @@ dependencies {
 test {
     useJUnitPlatform()
 }
-github {
-    slug = "saurabhrai19/java_app_gradle"
-    username = "saurabhrai19"
-    token = "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"
-}
 group = "my.group"
 
 publishing {
