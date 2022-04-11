@@ -41,11 +41,11 @@ publishing {
         }
     }
     publications {
-        gpr(MavenPublication) {
-            groupId = 'org.group.example'
-            artifactId = 'artifactjava'
-            version = '0.1'
-            from(components.java)
+        register("jar", MavenPublication) {
+            from(components["java"])
+            pom {
+                url.set("https://github.com/saurabhrai19/java_app_gradle.git")
+            }
         }
     }
 }
