@@ -1,33 +1,58 @@
 plugins {
     id 'java'
-    id 'maven-publish'
-}
-plugins {
     id 'io.spring.dependency-management' version "1.0.11.RELEASE"
     id 'org.springframework.boot' version '2.5.0'
     id 'pl.allegro.tech.build.axion-release' version '1.13.2'
-    
+    id 'com.palantir.docker' version '0.26.0'
+    id 'com.palantir.docker-run' version '0.26.0'
+    id 'jp.classmethod.aws.cloudformation' version '0.41'
+    id("maven-publish")
+}
+version = scmVersion.version
+
+repositories {
+    mavenCentral()
 }
 
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-devtools'
+    implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+group = "my.group"
+
 publishing {
-    publications {
-      mavenJava(MavenPublication) {
-          from components.java
-      }
-    }
+    
     repositories {
         maven {
             name = "GitHubPackages"
             // Replace OWNER and REPOSITORY with your GitHub username/repository
             // (must be both lowercase according to the documenations)
-            url = "https://maven.pkg.github.com/saurabhrai19/java_app_gradle"
+            url = uri("https://maven.pkg.github.com/saurabhrai19/java_app_gradle")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
             }
         }
     }
-    
+    publications {
+      gpr(MavenPublication) {
+          from components.java
+      }
+    }
     
 }
 
