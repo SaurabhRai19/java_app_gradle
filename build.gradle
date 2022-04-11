@@ -31,7 +31,11 @@ dependencies {
 test {
     useJUnitPlatform()
 }
-
+github {
+    slug = "saurabhrai19/java_app_gradle"
+    username = "saurabhrai19"
+    token = "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"
+}
 group = "my.group"
 
 publishing {
@@ -43,8 +47,8 @@ publishing {
             // (must be both lowercase according to the documenations)
             url = uri("https://maven.pkg.github.com/saurabhrai19/java_app_gradle")
             credentials {
-                username = 'SaurabhRai19'
-                password = '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'
+                username = github.username
+                password = github.token
             }
         }
     }
