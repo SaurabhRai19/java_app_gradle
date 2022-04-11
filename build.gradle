@@ -49,7 +49,6 @@ publishing {
     }
     publications {
         gpr(MavenPublication) {
-            artifactId ='artifactjava'
             from(components.java)
         }
     }
