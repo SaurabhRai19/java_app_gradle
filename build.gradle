@@ -20,7 +20,7 @@ publishing {
             name = "GitHubPackages"
             // Replace OWNER and REPOSITORY with your GitHub username/repository
             // (must be both lowercase according to the documenations)
-            url = uri("https://maven.pkg.github.com/saurabhrai19/java_app_gradle")
+            url = "https://maven.pkg.github.com/saurabhrai19/java_app_gradle"
             credentials {
                 username = System.getenv("GITHUB_USERNAME")
                 password = System.getenv("GITHUB_TOKEN")
