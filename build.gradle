@@ -2,8 +2,6 @@ plugins {
     id 'maven-publish'
 }
 
-version = scmVersion.version
-
 publishing {
     repositories {
         maven {
