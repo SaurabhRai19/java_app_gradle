@@ -12,7 +12,7 @@ jobs:
       packages: write 
     strategy:
       matrix:
-        java-version: [ 8 ]
+        java-version: [ 11 ]
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK ${{ matrix.java-version }}
@@ -23,5 +23,5 @@ jobs:
     - name: grant exe permission
       run: chmod +x gradlew
     - name: buils with gradle
-      run: ./gradlew build --info
+      run: ./gradlew build
    
