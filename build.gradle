@@ -6,7 +6,7 @@ plugins {
     id 'com.palantir.docker' version '0.26.0'
     id 'com.palantir.docker-run' version '0.26.0'
     id 'jp.classmethod.aws.cloudformation' version '0.41'
-    id 'maven'
+    id 'maven-publish'
 }
 version = scmVersion.version
 
