@@ -16,8 +16,8 @@ repositories {
     maven {
         url = uri("https://maven.pkg.github.com/saurabhrai19/java_app_gradle")
         credentials {
-            username = project.properties("GITHUB_ACTOR") ?: "SaurabhRai19"
-            password = project.properties("GITHUB_TOKEN") ?: "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"
+            username = project.properties['GITHUB_ACTOR'] ?: "SaurabhRai19"
+            password = project.properties['GITHUB_TOKEN'] ?: "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"
         }
     }
     
