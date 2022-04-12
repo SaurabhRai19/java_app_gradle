@@ -16,8 +16,8 @@ repositories {
     maven {
         url = uri("https://maven.pkg.github.com/saurabhrai19/java_app_gradle")
         credentials {
-            username = project.hasProperty("gpr.user") ?: "SaurabhRai19"
-            password = project.hasProperty("gpr.key") ?: "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"
+            username = project.hasProperty("gpr.user") ?: ""
+            password = project.hasProperty("gpr.key") ?: ""
                    }
     }
     
