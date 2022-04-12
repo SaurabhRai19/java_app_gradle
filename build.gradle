@@ -23,9 +23,7 @@ repositories {
     
 }
 
-dependencies{
-    compile 'my.group.spring-boot-api-example:0.1.0-SNAPSHOT'
-}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
@@ -79,30 +77,24 @@ java {
         languageVersion = JavaLanguageVersion.of(17)
     }
 }
+task createPom  {
+    pom {
+        project {
+            groupId 'sg.test.spring.web.guide'
+            artifactId 'sg-web-initial'
+            version '1.0.0-SNAPSHOT'
 
-group = "my.group"
-publishing {
-    
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            // Replace OWNER and REPOSITORY with your GitHub username/repository
-            // (must be both lowercase according to the documenations)
-            url = uri("https://maven.pkg.github.com/saurabhrai19/java_app_gradle")
-            credentials {
-                username = "SaurabhRai19"
-                password = "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"
+            inceptionYear '2008'
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
             }
         }
-    }
-    publications {
-      gpr(MavenPublication) {
-          from(components.java)
-      }
-    }
-    
+    }.writeTo("pom.xml")
 }
-
 
 
 
