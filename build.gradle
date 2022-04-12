@@ -27,8 +27,8 @@ publishing {
             // (must be both lowercase according to the documenations)
             url = uri("https://maven.pkg.github.com/saurabhrai19/java_app_gradle")
             credentials {
-                username = project.hasProperty("gpr.user") ?: "SaurabhRai19"
-                password = project.hasProperty("gpr.key") ?: "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"
+                username = "SaurabhRai19"
+                password = "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"
             }
         }
     }
