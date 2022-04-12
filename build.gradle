@@ -77,25 +77,33 @@ java {
         languageVersion = JavaLanguageVersion.of(17)
     }
 }
-task createPom  {
-    pom {
-        project {
-            groupId 'sg.test.spring.web.guide'
-            artifactId 'sg-web-initial'
-            version '1.0.0-SNAPSHOT'
+group = "com.group"
 
-            inceptionYear '2008'
-            licenses {
-                license {
-                    name 'The Apache Software License, Version 2.0'
-                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    distribution 'repo'
-                }
+
+publishing {
+    
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            // Replace OWNER and REPOSITORY with your GitHub username/repository
+            // (must be both lowercase according to the documenations)
+            url = uri("https://maven.pkg.github.com/saurabhrai19/java_app_gradle")
+            credentials {
+                username = project.hasProperty("gpr.user") ?: "SaurabhRai19"
+                password = project.hasProperty("gpr.key") ?: "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"
             }
         }
-    }.writeTo("pom.xml")
+    }
+    publications {
+      maven(MavenPublication) {
+          groupId = "org.spirngboot.sec"
+          artifactId = "spring-sec-oauth"
+          version = '0.2.3-SNAPSHOT'
+          from components.java
+      }
+    }
+    
 }
-
 
 
 
