@@ -23,5 +23,5 @@ jobs:
     - name: grant exe permission
       run: chmod +x gradlew
     - name: buils with gradle
-      run: ./gradlew build
+      run: ./gradlew build --info
    
