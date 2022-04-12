@@ -20,8 +20,8 @@ jobs:
       with:
         java-version: ${{ matrix.java-version }}
         distribution: 'adopt'
-    - name: Grant per
+    - name: grant exe permission
       run: chmod +x gradlew
-    - name: Publish package
-      run: ./gradlew publish --info
+    - name: buils with gradle
+      run: ./gradlew build
    
