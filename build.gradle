@@ -16,8 +16,8 @@ repositories {
     maven {
         url = uri("https://maven.pkg.github.com/saurabhrai19/java_app_gradle")
         credentials {
-            username = project.findProperty("gpr.user") ?: "SaurabhRai19"
-            password = project.findProperty("gpr.key") ?: "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"
+            username = project.properties("GITHUB_ACTOR") ?: "SaurabhRai19"
+            password = project.properties("GITHUB_TOKEN") ?: "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"
         }
     }
     
@@ -79,31 +79,6 @@ java {
 }
 group = "com.group"
 
-
-publishing {
-    
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            // Replace OWNER and REPOSITORY with your GitHub username/repository
-            // (must be both lowercase according to the documenations)
-            url = uri("https://maven.pkg.github.com/saurabhrai19/java_app_gradle")
-            credentials {
-                username = project.hasProperty("gpr.user") ?: "SaurabhRai19"
-                password = project.hasProperty("gpr.key") ?: "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"
-            }
-        }
-    }
-    publications {
-      maven(MavenPublication) {
-          groupId = "org.spirngboot.sec"
-          artifactId = "spring-sec-oauth"
-          version = '0.2.3-SNAPSHOT'
-          from components.java
-      }
-    }
-    
-}
 
 
 
