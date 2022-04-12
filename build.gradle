@@ -6,7 +6,7 @@ plugins {
     id 'com.palantir.docker' version '0.26.0'
     id 'com.palantir.docker-run' version '0.26.0'
     id 'jp.classmethod.aws.cloudformation' version '0.41'
-    id("maven-publish")
+    id 'maven'
 }
 version = scmVersion.version
 
@@ -24,30 +24,6 @@ repositories {
 }
 
 
-
-publishing {
-    
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            // Replace OWNER and REPOSITORY with your GitHub username/repository
-            // (must be both lowercase according to the documenations)
-            url = uri("https://maven.pkg.github.com/saurabhrai19/java_app_gradle")
-            credentials {
-                username = "SaurabhRai19"
-                password = "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"
-            }
-        }
-    }
-    publications {
-      gpr(MavenPublication) {
-          from(components.java)
-      }
-    }
-    
-}
-
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
@@ -55,8 +31,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-devtools'
     implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
-    implementation 'my.group.spring-boot-api-example:0.1.0-SNAPSHOT'
-    
+    compile 'my.group.spring-boot-api-example:0.1.0-SNAPSHOT'
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
 
@@ -66,9 +41,6 @@ dependencies {
 test {
     useJUnitPlatform()
 }
-group = "my.group"
-
-
 String dockerHubUsernameProperty = findProperty('dockerHubUsername') ?: 'tkgregory'
 String imageName = "${dockerHubUsernameProperty}/spring-boot-api-example:$version"
 
@@ -105,4 +77,32 @@ java {
         languageVersion = JavaLanguageVersion.of(17)
     }
 }
+
+group = "my.group"
+publishing {
+    
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            // Replace OWNER and REPOSITORY with your GitHub username/repository
+            // (must be both lowercase according to the documenations)
+            url = uri("https://maven.pkg.github.com/saurabhrai19/java_app_gradle")
+            credentials {
+                username = "SaurabhRai19"
+                password = "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"
+            }
+        }
+    }
+    publications {
+      gpr(MavenPublication) {
+          from(components.java)
+      }
+    }
+    
+}
+
+
+
+
+
 
