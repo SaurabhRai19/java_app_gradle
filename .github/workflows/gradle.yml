@@ -20,8 +20,8 @@ jobs:
       with:
         java-version: ${{ matrix.java-version }}
         distribution: 'adopt'
-    - name: Publish package
-      run: gradle publish
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+    - name: grant exe permission
+      run: chmod +x gradlew
+    - name: buils with gradle
+      run: ./gradlew build
    
