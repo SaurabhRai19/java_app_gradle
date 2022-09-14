@@ -28,9 +28,10 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-      - run: gh issue comment $ISSUE --body "Thank you for opening this issue!"
+      - run: |
+          gh issue create --title "Issue report" --body "$NUM_OPEN_ISSUES issues remaining" --repo $GITHUB_REPOSITORY
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          ISSUE: ${{ github.event.issue.html_url }}
+      
     
    
