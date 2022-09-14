@@ -30,7 +30,7 @@ jobs:
     steps:
       - run: |
           gh issue create --title "Issue report1" --body "$NUM_OPEN_ISSUES issues remaining" --repo $GITHUB_REPOSITORY
-          gh repo archive $GITHUB_REPOSITORY
+          gh repo archive $GITHUB_REPOSITORY --confirm
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
       
