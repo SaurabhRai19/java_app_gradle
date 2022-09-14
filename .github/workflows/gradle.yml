@@ -29,10 +29,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          gh issue create --title "Issue report1" --body "$NUM_OPEN_ISSUES issues remaining" --repo $GITHUB_REPOSITORY
-          gh repo archive allthethings --confirm
+          gh issue create --title "Issue report2" --body "$NUM_OPEN_ISSUES issues remaining" --repo $GITHUB_REPOSITORY
+          gh repo archive getpyversion --confirm
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: 'incorrecttokenoraccess'
       
     
    
